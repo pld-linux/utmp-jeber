@@ -1,7 +1,7 @@
 Summary:	Print and optionally remove broken UTMP entries
 Summary(pl):	Wy¶wietl i opcjonalnie usuñ wadliwe wpisy UTMP
 Name:		utmp-jeber
-Version:	1.0.9
+Version:	1.0.10
 Release:	1
 Copyright:	GPL
 Group:		Applications/System
@@ -13,7 +13,7 @@ Buildroot:	/tmp/%{name}-%{version}-root-%(id -u -n)
 
 %description
 UTMP Jeber is a small tool which prints broken entries found in UTMP.
-It has a few various methods of process analysis, which you can select
+It has various methods of process analysis, which you can select
 using command line arguments. It optionally removes broken entries. 
 
 %description -l pl
