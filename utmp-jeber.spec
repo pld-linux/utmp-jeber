@@ -25,7 +25,6 @@ opcjonalnie potrafi usuwaæ uszkodzone wpisy.
 %package cron
 Summary:	cron script for UTMP Jeber
 Summary(pl):	Skrypt cyklicznego wykonywania dla UTMP Jeber
-License:	GPL
 Group:		Applications/System
 Requires:	%{name} = %{version}
 Requires:	crontabs
@@ -44,7 +43,7 @@ wyst±pi±) poprzez demona syslog. Skrypt jest co godzinê uruchamiany
 przy u¿yciu demona cron.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 %{__aclocal}
@@ -56,17 +55,19 @@ przy u¿yciu demona cron.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_bindir}
 install -d $RPM_BUILD_ROOT/etc/cron.hourly
-cp -f %{name}.cron $RPM_BUILD_ROOT/etc/cron.hourly/%{name}
+
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+install %{name}.cron $RPM_BUILD_ROOT/etc/cron.hourly/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README README.polish ChangeLog NEWS AUTHORS KOPIOWANIE COPYING
+%doc README ChangeLog NEWS AUTHORS
+%doc %lang(pl) README.polish
 %attr(755,root,root) %{_bindir}/*
 
 %files cron
