@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.pld.org.pl/software/utmp-jeber/%{name}-%{version}.tar.gz
+# Source0-md5:	e1c8b052a29c6fb7160123400cda5452
 URL:		http://utmp-jeber.pld.org.pl/
 BuildRequires:	autoconf
 BuildRequires:	automake
