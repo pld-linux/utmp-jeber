@@ -2,7 +2,7 @@ Summary:	Print and optionally remove broken UTMP entries
 Summary(pl):	Wy¶wietl i opcjonalnie usuñ wadliwe wpisy UTMP
 Name:		utmp-jeber
 Version:	1.0.13
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.pld.org.pl/software/utmp-jeber/%{name}-%{version}.tar.gz
