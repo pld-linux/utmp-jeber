@@ -1,0 +1,73 @@
+Summary:	Print and optionally remove broken UTMP entries
+Summary(pl):	Wy¶wietl i opcjonalnie usuñ wadliwe wpisy UTMP
+Name:		utmp-jeber
+Version:	1.0.9
+Release:	1
+Copyright:	GPL
+Group:		Applications/System
+Source:		ftp://ftp.pld.org.pl/software/utmp-jeber/%{name}-%{version}.tar.gz
+URL:		http://utmp-jeber.pld.org.pl/
+BuildRequires:	autoconf
+BuildRequires:	automake
+Buildroot:	/tmp/%{name}-%{version}-root-%(id -u -n)
+
+%description
+UTMP Jeber is a small tool which prints broken entries found in UTMP.
+It has a few various methods of process analysis, which you can select
+using command line arguments. It optionally removes broken entries. 
+
+%description -l pl
+UTMP Jeber to ma³e narzêdzie, które wy¶wietla uszkodzone wpisy
+znalezione w UTMP. Posiada ono parê metod analizowania procesów,
+a ich wyboru mo¿esz dokonaæ u¿ywaj±c argumentów linii poleceñ.
+Jeber opcjonalnie potrafi usuwaæ uszkodzone wpisy.
+
+%package cron
+Summary:	cron script for UTMP Jeber
+Summary(pl):	skrypt cyklicznego wykonywania dla UTMP Jeber
+License:	GPL
+Group:		Applications/System
+Requires:	%{name} = %{version}
+Requires:	crontabs
+Requires:	crondaemon
+Requires:	syslogdaemon
+
+%description cron
+This package contains a script, which runs UTMP Jeber
+in batch mode and reports actions (if any) via syslog.
+The script is run periodicaly, every hour using cron.
+
+%description cron -l pl
+Ten pakiet zawiera skrypt, który uruchamia UTMP Jebera
+w trybie wsadowym i zg³asza ewentualnie podjête dzia³ania
+(je¶li jakie¶ wyst±pi±) poprzez demona syslog. Skrypt
+jest co godzinê uruchamiany przy u¿yciu demona cron.
+
+%prep
+%setup -q -n %{name}-%{version}
+
+%build
+%{__aclocal}
+%{__autoconf}
+%{__automake}
+%{__autoheader}
+%configure --with-utmp-file=/var/run/utmpx
+
+%install
+rm -rf $RPM_BUILD_ROOT
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT/etc/cron.hourly
+cp -f %{name}.cron $RPM_BUILD_ROOT/etc/cron.hourly/%{name}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%doc README README.polish ChangeLog NEWS AUTHORS KOPIOWANIE COPYING
+%attr(755,root,root) %{_bindir}/*
+
+%files cron
+%defattr(644,root,root,755)
+%attr(755,root,root) /etc/cron.hourly/%{name}
