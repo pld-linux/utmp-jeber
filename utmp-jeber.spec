@@ -2,11 +2,12 @@ Summary:	Print and optionally remove broken UTMP entries
 Summary(pl):	Wy¶wietl i opcjonalnie usuñ wadliwe wpisy UTMP
 Name:		utmp-jeber
 Version:	1.0.13
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.pld.org.pl/software/utmp-jeber/%{name}-%{version}.tar.gz
 # Source0-md5:	e1c8b052a29c6fb7160123400cda5452
+Patch0:		%{name}-multiline.patch
 URL:		http://utmp-jeber.pld.org.pl/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -45,6 +46,7 @@ przy u¿yciu demona cron.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__aclocal}
