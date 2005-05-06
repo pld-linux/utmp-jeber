@@ -1,0 +1,13 @@
+--- ./utmp-jeber.cron.in~	2003-02-11 18:00:33.000000000 +0200
++++ ./utmp-jeber.cron.in	2005-05-06 15:56:33.000000000 +0300
+@@ -7,7 +7,9 @@
+ 
+ RESULT=`@PACKAGE@ -bx`
+ if [ "x$RESULT" != "x" ]; then
+-    logger -t "@PACKAGE@" -p auth.notice "$RESULT"
++	echo "$RESULT" | while read MSG; do
++		logger -t "@PACKAGE@" -p auth.notice "$MSG"
++	done
+ fi
+ 
+ exit 0
