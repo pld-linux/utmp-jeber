@@ -28,9 +28,9 @@ opcjonalnie potrafi usuwaæ uszkodzone wpisy.
 Summary:	cron script for UTMP Jeber
 Summary(pl):	Skrypt cyklicznego wykonywania dla UTMP Jeber
 Group:		Applications/System
-Requires:	%{name} = %{version}
-Requires:	crontabs
+Requires:	%{name} = %{version}-%{release}
 Requires:	crondaemon
+Requires:	crontabs
 Requires:	syslogdaemon
 
 %description cron
