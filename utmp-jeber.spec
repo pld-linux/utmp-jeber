@@ -1,5 +1,5 @@
 Summary:	Print and optionally remove broken UTMP entries
-Summary(pl.UTF-8):   Wyświetlanie i opcjonalnie usuwanie wadliwych wpisów UTMP
+Summary(pl.UTF-8):	Wyświetlanie i opcjonalnie usuwanie wadliwych wpisów UTMP
 Name:		utmp-jeber
 Version:	1.0.13
 Release:	3
@@ -26,7 +26,7 @@ opcjonalnie potrafi usuwać uszkodzone wpisy.
 
 %package cron
 Summary:	cron script for UTMP Jeber
-Summary(pl.UTF-8):   Skrypt cyklicznego wykonywania dla UTMP Jeber
+Summary(pl.UTF-8):	Skrypt cyklicznego wykonywania dla UTMP Jeber
 Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
 Requires:	crondaemon
